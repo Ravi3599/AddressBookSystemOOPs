@@ -30,20 +30,22 @@ public class Person {
 	    System.out.println("Enter your choice");
 	    System.out.println("1)Add contact");
 	    System.out.println("2)Edit contact");
+	    System.out.println("3)Delete contact");
 	    int choice = sc.nextInt();
 	    switch(choice) {
 	    	case 1:
-	    	 contactInfo();
-	    	 j++;
-	    	 Contact person4 = new Contact(firstName,lastName,address,state,zip,phoneNumber,email);
-	 		 personDetails[3]=person4;
-	 		System.out.println("Newly updated contact list is");
-			 for(int i = 0; i < 3 + j;i++) {
+	    		contactInfo();
+	    		j++;
+	    		Contact person4 = new Contact(firstName,lastName,address,state,zip,phoneNumber,email);
+	    		personDetails[3]=person4;
+	    		System.out.println("Newly updated contact list is");
+	    		for(int i = 0; i < 3 + j;i++) {
 				   System.out.println(personDetails[i]);
-			 }
+	    		}
+	    		break;
 	    	case 2:
 	    		int i;
-	    		System.out.println("Enter name of person you want to edit");
+	    		System.out.println("Enter name of person whose details you want to edit");
 	    		String keyName = sc.next();
 	    		for( i = 0; i < 3; i++) {
 	    		if(keyName.equals(personDetails[i].firstName)) {
@@ -56,7 +58,24 @@ public class Person {
 	    		for(i = 0; i < 3;i++) {
 	    			   System.out.println(personDetails[i]);
 	    		}
-	    		
+	    		break;
+	    	case 3:
+	    		System.out.println("Enter name of person whose details you want to delete");
+	    		String keyToDelete = sc.next();
+	    		for( i = 0; i < 3; i++) {
+	    			if(keyToDelete.equals(personDetails[i].firstName)) {
+	    				for(int k = i; k < i + 1; k++) {
+	    					personDetails[k]=personDetails[k+1];
+	    				}
+	    			}
+	    		}
+	    		System.out.println("Newly edited contact list is");
+	    		for(i = 0; i < 2;i++) {
+	    			   System.out.println(personDetails[i]);
+	    		}
+	    		break;
+	    	default:
+	    		System.err.println("Enter valid choice");
 		}
 	}
 	public static void contactInfo() {
